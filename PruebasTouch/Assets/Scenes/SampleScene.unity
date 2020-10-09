@@ -230,9 +230,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 725338258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e539e1a4cf071514e985a7a8d6f355da, type: 3}
+  m_Script: {fileID: 11500000, guid: ad6fb2530a2d5e74dbc934afd17ec41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeedX: 0
+  rotationSpeedY: 0
 --- !u!212 &725338260
 SpriteRenderer:
   m_ObjectHideFlags: 0

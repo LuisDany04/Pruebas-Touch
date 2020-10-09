@@ -10,6 +10,8 @@ public class spinTest_5 : MonoBehaviour
     float f_difY = 0;
     float f_steps = 0.0f;
     int i_direction = 1;
+    public float rotationSpeedX;
+    public float rotationSpeedY;
 
     // Use this for initialization
     void Start() {
@@ -49,9 +51,12 @@ public class spinTest_5 : MonoBehaviour
             f_lastX = -Input.GetAxis("Mouse X");
         }
         else {
-            if (f_difX > 0.5f) f_difX -= 0.05f;
-            if (f_difX < 0.5f) f_difX += 0.05f;
-
+            if (f_difX > 0.1f) f_difX -= 0.05f;
+            if (f_difX < 0.1f) f_difX += 0.05f;
+            rotationSpeedX = f_difX;
+            if (rotationSpeedX < 0.15 && rotationSpeedX > -0.15) {
+                f_difX = 0;
+            }
             transform.Rotate(0, 0, f_difX * i_direction);
         }
 
@@ -87,9 +92,15 @@ public class spinTest_5 : MonoBehaviour
             f_lastY = -Input.GetAxis("Mouse Y");
         }
         else {
-            if (f_difY > 0.5f) f_difY -= 0.05f;
-            if (f_difY < 0.5f) f_difY += 0.05f;
-
+            if (f_difY > 0.1f) f_difY -= 0.05f;
+            if (f_difY < 0.1f) f_difY += 0.05f;
+            rotationSpeedY = f_difY;
+            if (rotationSpeedY < 0.11f && rotationSpeedY > -0.11f) {
+                f_difY = 0f;
+            }
+            else if (rotationSpeedX == 0.05f && rotationSpeedY < 0.15f && rotationSpeedY > -0.15f) {
+                    f_difY = 0f;
+            }
             transform.Rotate(0, 0, f_difY * i_direction);
         }
 
