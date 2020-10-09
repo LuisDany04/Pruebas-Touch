@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spinTest_4 : MonoBehaviour
+public class spinTest_5 : MonoBehaviour
 {
     float f_lastX = 0.0f;
     float f_difX = 0.5f;
@@ -24,17 +24,26 @@ public class spinTest_4 : MonoBehaviour
         else if (Input.GetMouseButton(0)) {
             f_difX = Mathf.Abs(f_lastX - Input.GetAxis("Mouse X"));
 
-            if (f_lastX < Input.GetAxis("Mouse X")) {
-                i_direction = -1;
-                //transform.Rotate(Vector3.up, -f_difX);
-                transform.Rotate(0, 0, -f_difX);
-                //transform.rotation = Quaternion.Euler(0f, 0f, -f_difX);
+            if (Input.mousePosition.y > Screen.height / 2) {
+
+                if (f_lastX < Input.GetAxis("Mouse X")) {
+                    i_direction = -1;
+                    transform.Rotate(0, 0, -f_difX + Time.deltaTime);
+                }
+                if (f_lastX > Input.GetAxis("Mouse X")) {
+                    i_direction = 1;
+                    transform.Rotate(0, 0, f_difX + Time.deltaTime);
+                }
             }
-            if (f_lastX > Input.GetAxis("Mouse X")) {
-                i_direction = 1;
-                //transform.Rotate(Vector3.one, f_difX);
-                transform.Rotate(0, 0, f_difX);
-                //transform.rotation = Quaternion.Euler(0f, 0f, -f_difX);
+            else if (Input.mousePosition.y < Screen.height / 2) {
+                if (f_lastX < Input.GetAxis("Mouse X")) {
+                    i_direction = 1;
+                    transform.Rotate(0, 0, f_difX + Time.deltaTime);
+                }
+                if (f_lastX > Input.GetAxis("Mouse X")) {
+                    i_direction = -1;
+                    transform.Rotate(0, 0, -f_difX + Time.deltaTime);
+                }
             }
 
             f_lastX = -Input.GetAxis("Mouse X");
@@ -57,29 +66,21 @@ public class spinTest_4 : MonoBehaviour
 
                 if (f_lastY < Input.GetAxis("Mouse Y")) {
                     i_direction = -1;
-                    //transform.Rotate(Vector3.up, -f_difX);
-                    transform.Rotate(0, 0, -f_difY);
-                    //transform.rotation = Quaternion.Euler(0f, 0f, -f_difX);
+                    transform.Rotate(0, 0, -f_difY + Time.deltaTime);
                 }
                 if (f_lastY > Input.GetAxis("Mouse Y")) {
                     i_direction = 1;
-                    //transform.Rotate(Vector3.one, f_difX);
-                    transform.Rotate(0, 0, f_difY);
-                    //transform.rotation = Quaternion.Euler(0f, 0f, -f_difX);
+                    transform.Rotate(0, 0, f_difY + Time.deltaTime);
                 }
             }
             else if (Input.mousePosition.x > Screen.width / 2) {
                 if (f_lastY < Input.GetAxis("Mouse Y")) {
                     i_direction = 1;
-                    //transform.Rotate(Vector3.up, -f_difX);
-                    transform.Rotate(0, 0, f_difY);
-                    //transform.rotation = Quaternion.Euler(0f, 0f, -f_difX);
+                    transform.Rotate(0, 0, f_difY + Time.deltaTime);
                 }
                 if (f_lastY > Input.GetAxis("Mouse Y")) {
                     i_direction = -1;
-                    //transform.Rotate(Vector3.one, f_difX);
-                    transform.Rotate(0, 0, -f_difY);
-                    //transform.rotation = Quaternion.Euler(0f, 0f, -f_difX);
+                    transform.Rotate(0, 0, -f_difY + Time.deltaTime);
                 }
             }
 
